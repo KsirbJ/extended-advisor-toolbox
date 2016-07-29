@@ -69,7 +69,8 @@
         <li>Ctrl + Shift + R  - Generate rating URL</li>
         <li>Ctrl + Shift + U  - Unassign & Close</li>
         <li>Ctrl + Shift + S  - Submit report</li>
-        <li>Ctrl + Shift + X  - Submit report, close panel, unassign, close </li>
+        <li>Ctrl + Shift + L  - Increment the convos per hour count</li>
+        <li>Ctrl + Shift + X  - Submit report, close panel, unassign, close, increment convos per hour count </li>
       </ul>
       <span> Using Reports Automator </span>
       <ol>
@@ -80,6 +81,25 @@
         <li> 5. If you've already submitted a report for a conversation, you'll see a notification about this in the panel (to avoid double entries).</li>
         <li> 6. After saving your address and email on this page, it will be saved, but won't visually show up in the input fields again</li>
       </ol>
+      <span>Clock In / Out Function</span>
+      <ul>
+        <li><strong>Click "Clock In" when you start your shift. This will:</strong>
+          <ol>
+            <li>1. Clock in on TrackSmart (provided that you're signed into your account already)</li>
+            <li>2. Post a "Here for --" message to the slack channel (Provided you're logged in)</li>
+            <li>3. Open up intercom</li>
+            <li>4. Begin tracking how many conversations you close per hour (Ctrl+Shift+L / Ctrl+Shift+X)</li>
+          </ol>
+        </li>
+        <li><strong>Click "Clock Out" when your shift is over. This will:</strong>
+          <ol>
+            <li>1. Clock out on TrackSmart</li>
+            <li>3. post a "Clocking out" message on the slack channel</li>
+            <li>4. Open up the post shift report form</li>
+            <li>5. Update the all-time conversations per hour count</li>
+          </ol>
+        </li>
+      </ul>
     </div>
 
     <script src="options.js"></script>
