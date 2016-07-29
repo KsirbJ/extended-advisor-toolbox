@@ -27,3 +27,5 @@
 6. Modified tools/utils/background.js to also check for other messages and call functions accordingly
 7. Minor changes to tools/utils/content/content.js to handle the new keyboard shortcuts
 8. Modified manifest.json to include the new scripts
+
+-- First commit is the original version, second shows my changes --
