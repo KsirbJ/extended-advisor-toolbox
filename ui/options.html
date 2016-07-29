@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Report Automator - Codecademy</title>
+    <style>
+      body { padding: 10px; }
+      body div {
+        padding: 1% 0;
+        display: block;
+      }
+      body div * {
+        display: block;
+        padding: 1% 0;
+      }
+      label {
+        font-size: 1.6em;
+        font-style: italic;
+      }
+      input {
+        font-size: 1.4em;
+      }
+      ol {
+        list-style: decimal;
+        margin: 0;
+      }
+      p {
+        padding: 0;
+      }
+      ul {
+        margin: 0;
+      }
+      span {
+        text-decoration: underline;
+      }
+      #how-to {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <label>Your Name:</label>
+      <input id="advisor-name" type="text" />
+    </div>
+
+    <div>
+      <h2> FOR INVOICE GENERATION (optional, if you don't fill them here you have to do it manually in the invoice)</h2>
+      <label for="advisor-address">Address:</label>
+      <input id="advisor-address" type="text" style="width:250px" name="address" />
+
+      <label for="advisor-email">Email:</label>
+      <input id="advisor-email" type="text" name="email"/>
+    </div>
+
+    <div>
+      <label>Number of seconds to submit report?</label>
+      <input id="time-between-screens-form" type="text" />
+    </div>
+
+    <div id="status"></div>
+    <button style="padding: 0;" id="save">Save</button>
+
+    <div id="how-to">
+      <h1 style="font-size: 20px; font-weight: bold;"> How-To Guides </h1>
+      <span style="font-style: underlined"> Keyboard Shortcuts </span>
+      <ul>
+        <li>Ctrl + Shift + O  - Open/close reports panel</li>
+        <li>Ctrl + Shift + R  - Generate rating URL</li>
+        <li>Ctrl + Shift + U  - Unassign & Close</li>
+        <li>Ctrl + Shift + S  - Submit report</li>
+        <li>Ctrl + Shift + X  - Submit report, close panel, unassign, close </li>
+      </ul>
+      <span> Using Reports Automator </span>
+      <ol>
+        <li> 1. Make sure you set your name and # of seconds in the fields above. Make sure your name matches (including casing) the one listed in the <a style="display:inline;" href="https://docs.google.com/forms/d/1xsr7MktdvKWqkMgA4oU1dg3Gb3rKlBwunZpDz-YzBeY/viewform">post-interaction report form</a></li>
+        <li> 2. Being in the intercom tab, click the panda icon, then "Open/Close Reports Panel" (or use shortcut Ctrl + Shift + O). This will open the panel for your active conversation. Try it out!</li>
+        <li> 3. If you select another conversation while the panel is open, it'll update with that conversation's info </li>
+        <li> 4. Fill the required fields and submit. Real report form will automatically be filled, submitted and closed. You'll get a notification whether the report suceeded or failed.</li>
+        <li> 5. If you've already submitted a report for a conversation, you'll see a notification about this in the panel (to avoid double entries).</li>
+        <li> 6. After saving your address and email on this page, it will be saved, but won't visually show up in the input fields again</li>
+      </ol>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

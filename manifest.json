@@ -1,0 +1,51 @@
+{
+	"manifest_version": 2,
+	"name": "Advisor Toolbox - Codecademy",
+	"version": "1.1.5",
+	"devtools_page": "core/intercom-mapper/devtools.html",
+
+	"permissions": [
+		"tabs","declarativeWebRequest", "*://*/*", "storage", "webRequest",
+		"activeTab", "downloads", "https://ajax.googleapis.com/"
+	],
+
+	"content_scripts": [
+		{
+			"matches": [
+				"https://app.intercom.io/a/apps/*",
+				"http://timeclock.tracksmart.com/app/time/manage/*",
+				"https://timeclock.tracksmart.com/app/time/manage/*"
+			],
+
+			"js": [
+				"libs/jquery-2.1.4.js", "libs/notify.min.js", "deploy/content.js"
+			]
+		},
+		{
+			"matches": [
+				"https://docs.google.com/forms/*", "https://www.codecademy.com/advisors/survey/new"
+			],
+			"js": [
+				"libs/jquery-2.1.4.js"
+			],
+			"run_at": "document_start"
+		}
+	],
+
+	"browser_action": {
+		"default_icon": "img/panda-48x48.png",
+		"default_popup": "ui/popup.html",
+		"default_title": "Advisor Toolbox"
+	},
+
+	"options_ui": {
+		"page": "ui/options.html",
+		"chrome_style": true
+	},
+
+	"background": {
+		"scripts": [
+			"libs/jquery-2.1.4.js", "deploy/background.js"
+		]
+	}
+}
