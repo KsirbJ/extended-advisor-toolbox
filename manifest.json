@@ -47,9 +47,9 @@
 		"scripts": [
 			"libs/jquery-2.1.4.js", "libs/moment.min.js", "deploy/background.js"
 		]
-	},
+	}
 	
-	"web_accessible_resources": [
-		"img/error.png", "img/panda-48x48.png"
-	]
+	// "web_accessible_resources": [
+	// 	"img/error.png", "img/panda-48x48.png"
+	// ]
 }
