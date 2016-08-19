@@ -1,7 +1,6 @@
 // global variables 
 var trackSmartResponse = null;
 var slackResponse = null;
-var slackTab;
 var userData = {
 	working: false,
 	totalHours: 0,
@@ -47,7 +46,6 @@ function clockIn(){
 
 	chrome.tabs.create({active: false, url: "https://codecademy.slack.com/messages/proadvisors/details/"}, 
 		function(tab){
-			slackTab = tab;
 			chrome.tabs.executeScript(tab.id, {file: "libs/moment.min.js"}, function(){
 				chrome.tabs.executeScript(tab.id, { file: "libs/jquery-2.1.4.js"}, function(){
 					chrome.tabs.executeScript(tab.id, { file: "deploy/slack.js", runAt: "document_end" }, function(){
@@ -83,31 +81,21 @@ function clockIn(){
 function clockOut(){
 	// no longer working
 	userData.working = false;
-	// try to find original slack tab, and send clock out message
-	chrome.tabs.get(slackTab.id, function(tab){
-		if (chrome.runtime.lastError) {
-			// tab was probably closed. Open a new one
-			chrome.tabs.create({active: false, url: "https://codecademy.slack.com/messages/proadvisors/details/"}, 
-				function(tab){
-					chrome.tabs.executeScript(tab.id, {file: "libs/moment.min.js"}, function(){
-						chrome.tabs.executeScript(tab.id, { file: "libs/jquery-2.1.4.js"}, function(){
-							chrome.tabs.executeScript(tab.id, { file: "deploy/slack.js", runAt: "document_end" }, function(){
-								chrome.tabs.sendMessage(tab.id, {message: "clock-out", newTab: 'yes'});
-								if(chrome.runtime.lastError){
-									console.log(chrome.runtime.lastError);
-								}
-							});
-						})
+	// clock out on slack
+	chrome.tabs.create({active: false, url: "https://codecademy.slack.com/messages/proadvisors/details/"}, 
+		function(tab){
+			chrome.tabs.executeScript(tab.id, {file: "libs/moment.min.js"}, function(){
+				chrome.tabs.executeScript(tab.id, { file: "libs/jquery-2.1.4.js"}, function(){
+					chrome.tabs.executeScript(tab.id, { file: "deploy/slack.js", runAt: "document_end" }, function(){
+						chrome.tabs.sendMessage(tab.id, {message: "clock-out"});
+						if(chrome.runtime.lastError){
+							console.log(chrome.runtime.lastError);
+						}
 					});
-				}
-			);
-        	console.log(chrome.runtime.lastError.message);
-	    } else {
-	        // Tab exists
-	        chrome.tabs.sendMessage(tab.id, {message: "clock-out", newTab: 'no'});
-	    }
-
-	});
+				})
+			});
+		}
+	);
 
 	// clock out on tracksmart
 	chrome.tabs.create({active: false, url: "https://timeclock.tracksmart.com/app/time"}, 

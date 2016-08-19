@@ -25,6 +25,7 @@ if(minNow > 45){
 var actionString = null;
 var clockInOut;
 var clicked;
+var closeTab = false;
 
 $.noConflict();
 jQuery(document).ready(function($){
@@ -44,23 +45,22 @@ jQuery(document).ready(function($){
 			$('#submit-button').trigger("click");
 			// check if it was successful 
 			if(result == actionString && clicked){
-				chrome.runtime.sendMessage({message: "success-slack"});
+				chrome.runtime.sendMessage({message: "success-slack", closeTab: closeTab});
 			}else{
-				chrome.runtime.sendMessage({message: "error-slack"});
+				chrome.runtime.sendMessage({message: "error-slack", closeTab: closeTab});
 			}
 		}, 5000);
 	}
 	clockInOut();
 });
 
-chrome.runtime.onMessage.addListener(function(message, sender){
-	if(message.message == "clock-in"){
+chrome.runtime.onMessage.addListener(function(request, sender){
+	if(request.message == "clock-in"){
 		actionString = "Here for " + hourNow;
-	}else if(message.message == "clock-out"){
+		closeTab = false;
+	}else if(request.message == "clock-out"){
 		actionString = "Clocking out";
-		if(message.newTab == "no"){
-			clockInOut();
-		}
+		closeTab = true;
 	}
 })
 

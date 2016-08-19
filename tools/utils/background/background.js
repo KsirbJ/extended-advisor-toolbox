@@ -57,6 +57,9 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 		// successfully posted to slack
 		case "success-slack":
 			slackResponse = 1;
+			if(request.closeTab){
+				chrome.tabs.remove(sender.tab.id);
+			}
 			break;
 		// error posting to slack
 		case "error-slack":
