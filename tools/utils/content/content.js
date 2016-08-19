@@ -25,12 +25,12 @@ function submit_close_unassign() {
 	$("div[data-content='Assign to teammate or team']").click();
 	$("div.js__admin-list-item div")[1].click();
 	$("button.js__conversation-header__close-button").click();
-	chrome.runtime.sendMessage({message: 'convo-closed'});
+	//chrome.runtime.sendMessage({message: 'convo-closed'});
 }
 
-function convo_closed(){
-	chrome.runtime.sendMessage({message: 'convo-closed'});
-}
+// function convo_closed(){
+// 	chrome.runtime.sendMessage({message: 'convo-closed'});
+// }
 
 // Disable intercom default shortcuts
 $("body").append(
@@ -44,7 +44,7 @@ $utils.createKeyboardShortcut(unassign_and_close, "U");
 $utils.createKeyboardShortcut(ratings_url, "R");
 $utils.createKeyboardShortcut(submit_press, "S");
 $utils.createKeyboardShortcut(submit_close_unassign, "X");
-$utils.createKeyboardShortcut(convo_closed, 'L')
+//$utils.createKeyboardShortcut(convo_closed, 'L')
 
 // Add listener to put URL in the convo
 chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {

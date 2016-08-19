@@ -57,6 +57,9 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 		// successfully posted to slack
 		case "success-slack":
 			slackResponse = 1;
+			if(request.closeTab){
+				chrome.tabs.remove(sender.tab.id);
+			}
 			break;
 		// error posting to slack
 		case "error-slack":
@@ -73,18 +76,18 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 			chrome.notifications.create(options);
 			break;
 		// a new conversation was closed
-		case "convo-closed":
-			if(userData.working){
-				// increment the counter
-				userData.closedThisShift ++;
-				// update storage 
-				chrome.storage.sync.set({'closedThisShift': userData.closedThisShift}, function(){
-					if(chrome.runtime.error){
-						console.log(chrome.runtime.error);
-					}
-				})
-			}
-			break;
+		// case "convo-closed":
+		// 	if(userData.working){
+		// 		// increment the counter
+		// 		userData.closedThisShift ++;
+		// 		// update storage 
+		// 		chrome.storage.sync.set({'closedThisShift': userData.closedThisShift}, function(){
+		// 			if(chrome.runtime.error){
+		// 				console.log(chrome.runtime.error);
+		// 			}
+		// 		})
+		// 	}
+		// 	break;
 		default:
 			break;
 	}
