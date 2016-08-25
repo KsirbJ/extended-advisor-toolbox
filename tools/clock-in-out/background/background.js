@@ -111,8 +111,6 @@ function clockOut(){
 			});
 		}
 	);
-	// open the post shift report tab
-	chrome.tabs.create({active: false, url: "https://docs.google.com/forms/d/e/1FAIpQLSciPORNy-a1iO-75rLK_suwJaBfWGzA-GlQPVVLAvRNQ_DW5w/viewform"});
 	// update the total convos (totalHours is updated by popup.js)
 	userData.totalClosedConvos += userData.closedThisShift;
 	// store data for later use
@@ -127,7 +125,6 @@ function clockOut(){
 	// clean up unused variables
 	userData.clockInTime = null;
 	userData.closedThisShift = 0;
-	slackTab = null;
 }
 
 
